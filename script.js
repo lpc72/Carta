@@ -1,927 +1,303 @@
-// ======================================
-// PROYECTO: PARA HEIDY ❤️
-// SCRIPT PRINCIPAL
-// ======================================
+/* ============================================================
+   SISTEMA WEB — NUEVA HISTORIA
+   SCRIPT PRINCIPAL
+   ============================================================ */
 
 
-// Esperar que cargue todo
+/* ============================================================
+   ESPERAR A QUE EL DOCUMENTO ESTÉ LISTO
+   ============================================================ */
 
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-
-    // ==================================
-    // LOADER
-    // ==================================
-
-    const loader = document.getElementById("loader");
+    console.log("Página cargada correctamente ♥");
 
 
-    setTimeout(() => {
+    /* ========================================================
+       ELEMENTOS PRINCIPALES
+       ======================================================== */
 
-        loader.classList.add("hide");
+    const introButton =
+        document.querySelector(".intro-button");
 
+    const intro =
+        document.querySelector(".intro");
 
-        showScene(0);
-
-
-    }, 2000);
-
-
-
-});
-
+    const main =
+        document.querySelector("#main-content");
 
 
+    /* ========================================================
+       CONFIGURACIÓN INICIAL
+       ======================================================== */
+
+    if (main) {
+        main.style.opacity = "0";
+
+        main.style.transition =
+            "opacity 1.2s ease";
+    }
 
 
-// ======================================
-// VARIABLES PRINCIPALES
-// ======================================
+    /* ========================================================
+       BOTÓN DE ENTRADA
+       ======================================================== */
+
+    if (introButton) {
+
+        introButton.addEventListener("click", () => {
+
+            /*
+             * Primero hacemos desaparecer
+             * suavemente la portada.
+             */
+
+            if (intro) {
+
+                intro.style.transition =
+                    "opacity 1s ease, transform 1s ease";
+
+                intro.style.opacity = "0";
+
+                intro.style.transform =
+                    "scale(1.02)";
+            }
 
 
-const scenes = document.querySelectorAll(".scene");
+            /*
+             * Después mostramos el contenido.
+             */
 
-const nextButtons = document.querySelectorAll(".btn-next");
+            setTimeout(() => {
 
-const sceneNumber = document.getElementById("sceneNumber");
+                if (main) {
 
+                    main.style.opacity = "1";
 
-let currentScene = 0;
-
-
-
-
-
-// ======================================
-// CAMBIO DE ESCENAS
-// ======================================
+                }
 
 
-function showScene(index){
+                /*
+                 * Llevamos al inicio de la historia.
+                 */
+
+                if (main) {
+
+                    main.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+
+            }, 700);
 
 
-    scenes.forEach(scene => {
+            /*
+             * Después de la transición,
+             * ocultamos completamente la portada.
+             */
 
-        scene.classList.remove("active");
+            setTimeout(() => {
+
+                if (intro) {
+
+                    intro.style.display = "none";
+
+                }
+
+            }, 1200);
+
+        });
+
+    }
+
+
+    /* ========================================================
+       ANIMACIONES AL HACER SCROLL
+       ======================================================== */
+
+    const animatedElements =
+        document.querySelectorAll(
+            ".story-section, .change-card, .future-card, " +
+            ".history-card, .history-quote, " +
+            ".proposal-letter, .proposal-question"
+        );
+
+
+    /*
+     * Estado inicial de los elementos.
+     */
+
+    animatedElements.forEach((element) => {
+
+        element.style.opacity = "0";
+
+        element.style.transform =
+            "translateY(30px)";
+
+        element.style.transition =
+            "opacity 0.9s ease, " +
+            "transform 0.9s ease";
 
     });
 
 
+    /* ========================================================
+       OBSERVER
+       ======================================================== */
 
-    if(scenes[index]){
+    const observer =
+        new IntersectionObserver(
+            (entries) => {
 
+                entries.forEach((entry) => {
 
-        scenes[index].classList.add("active");
+                    if (entry.isIntersecting) {
 
+                        entry.target.style.opacity = "1";
 
-        animateScene(scenes[index]);
+                        entry.target.style.transform =
+                            "translateY(0)";
 
+                        /*
+                         * Una vez visible no necesitamos
+                         * seguir observándolo.
+                         */
 
-        updateCounter(index);
+                        observer.unobserve(
+                            entry.target
+                        );
 
+                    }
 
-    }
+                });
 
-
-
-}
-
-
-
-
-
-// ======================================
-// BOTONES CONTINUAR
-// ======================================
-
-
-nextButtons.forEach(button => {
-
-
-    button.addEventListener("click",()=>{
-
-
-        if(currentScene < scenes.length - 1){
-
-
-            currentScene++;
+            },
+            {
+                threshold: 0.12
+            }
+        );
 
 
-            showScene(currentScene);
+    /* ========================================================
+       OBSERVAR ELEMENTOS
+       ======================================================== */
 
+    animatedElements.forEach((element) => {
 
-
-        }else{
-
-
-            openPopup();
-
-
-        }
-
-
+        observer.observe(element);
 
     });
 
 
-
 });
+/* ============================================================
+   CORAZONES DE LA RESPUESTA FINAL
+   ============================================================ */
+
+.floating-heart {
+    position: fixed;
+
+    bottom: -30px;
+
+    z-index: 9999;
+
+    color: var(--accent-light);
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation-name: floatingHeart;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
 
 
+@keyframes floatingHeart {
 
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.7);
 
-
-
-// ======================================
-// ACTUALIZAR NÚMERO DE ESCENA
-// ======================================
-
-
-function updateCounter(index){
-
-
-    if(sceneNumber){
-
-
-        sceneNumber.textContent = index + 1;
-
-
+        opacity: 0;
     }
 
-
-}
-
-
-
-
-
-
-
-// ======================================
-// ANIMACIONES DE ESCENA
-// ======================================
-
-
-function animateScene(scene){
-
-
-
-    const elements = scene.querySelectorAll(
-        "h1,h2,h3,p,.subtitle,.heart-message,.memory-photo"
-    );
-
-
-
-    gsap.fromTo(
-
-        elements,
-
-        {
-
-            opacity:0,
-
-            y:40
-
-        },
-
-        {
-
-
-            opacity:1,
-
-            y:0,
-
-            duration:1,
-
-            stagger:0.15,
-
-            ease:"power3.out"
-
-
-        }
-
-
-    );
-
-
-
-}
-
-
-
-
-
-
-
-// ======================================
-// BOTÓN REINICIAR
-// ======================================
-
-
-const restart = document.getElementById("restart");
-
-
-if(restart){
-
-
-    restart.addEventListener("click",()=>{
-
-
-        currentScene = 0;
-
-
-        showScene(0);
-
-
-    });
-
-
-}
-// ======================================
-// PARTÍCULAS DEL FONDO
-// ======================================
-
-
-const particlesContainer = document.getElementById("particles");
-
-
-function createParticles(){
-
-
-    if(!particlesContainer) return;
-
-
-
-    for(let i = 0; i < 80; i++){
-
-
-        const particle = document.createElement("span");
-
-
-        particle.className = "particle";
-
-
-        particle.style.left = Math.random() * 100 + "%";
-
-
-        particle.style.top = Math.random() * 100 + "%";
-
-
-
-        particle.style.animationDelay = 
-        Math.random() * 5 + "s";
-
-
-
-        particle.style.animationDuration = 
-        (5 + Math.random() * 8) + "s";
-
-
-
-        particlesContainer.appendChild(particle);
-
-
-
+    15% {
+        opacity: 0.85;
     }
 
-
-}
-
-
-createParticles();
-
-
-
-
-
-
-
-// ======================================
-// CORAZONES FLOTANTES
-// ======================================
-
-
-const heartsContainer = document.getElementById(
-    "hearts-container"
-);
-
-
-
-function createHeart(){
-
-
-
-    if(!heartsContainer) return;
-
-
-
-    const heart = document.createElement("span");
-
-
-    heart.className = "floating-heart";
-
-
-
-    heart.innerHTML = "❤";
-
-
-
-    heart.style.left = Math.random()*100+"%";
-
-
-
-    heart.style.animationDuration =
-    (5 + Math.random()*6)+"s";
-
-
-
-    heart.style.fontSize =
-    (10 + Math.random()*25)+"px";
-
-
-
-    heartsContainer.appendChild(heart);
-
-
-
-    setTimeout(()=>{
-
-
-        heart.remove();
-
-
-    },10000);
-
-
-
-}
-
-
-
-
-
-setInterval(createHeart,900);
-
-
-
-
-
-
-
-// ======================================
-// POPUP FINAL
-// ======================================
-
-
-const popup = document.getElementById(
-    "message-popup"
-);
-
-
-
-const closePopup = document.getElementById(
-    "closePopup"
-);
-
-
-
-function openPopup(){
-
-
-    if(!popup) return;
-
-
-    popup.classList.add("show");
-
-
-
-}
-
-
-
-if(closePopup){
-
-
-    closePopup.addEventListener("click",()=>{
-
-
-        popup.classList.remove("show");
-
-
-    });
-
-
-
-}
-
-
-
-
-
-
-
-// ======================================
-// EFECTO FOTO DE RECUERDO
-// ======================================
-
-
-const memoryPhoto = document.querySelector(
-    ".memory-photo img"
-);
-
-
-
-if(memoryPhoto){
-
-
-
-    memoryPhoto.addEventListener(
-        "mouseenter",
-        ()=>{
-
-
-            gsap.to(memoryPhoto,{
-
-                scale:1.08,
-
-                duration:.8,
-
-                ease:"power2.out"
-
-            });
-
-
-        }
-    );
-
-
-
-    memoryPhoto.addEventListener(
-        "mouseleave",
-        ()=>{
-
-
-            gsap.to(memoryPhoto,{
-
-                scale:1,
-
-                duration:.8,
-
-                ease:"power2.out"
-
-            });
-
-
-        }
-    );
-
-
-
-}
-
-
-
-
-
-
-
-// ======================================
-// CURSOR PERSONALIZADO
-// ======================================
-
-
-const cursor = document.querySelector(
-    ".cursor"
-);
-
-
-
-const cursorBlur = document.querySelector(
-    ".cursor-blur"
-);
-
-
-
-document.addEventListener(
-"mousemove",
-(e)=>{
-
-
-    if(cursor){
-
-
-        cursor.style.left = e.clientX+"px";
-
-        cursor.style.top = e.clientY+"px";
-
-
+    70% {
+        opacity: 0.7;
     }
 
+    100% {
+        transform:
+            translateY(-100vh)
+            rotate(25deg)
+            scale(1.1);
 
-
-    if(cursorBlur){
-
-
-        cursorBlur.style.left = e.clientX+"px";
-
-        cursorBlur.style.top = e.clientY+"px";
-
-
+        opacity: 0;
     }
+}
+/* ============================================================
+   DETALLES FINALES
+   ============================================================ */
+
+.scroll-stopped {
+    --scroll-state: 1;
+}
 
 
+/* ============================================================
+   MEJORA PARA DISPOSITIVOS TÁCTILES
+   ============================================================ */
 
-});
+@media (hover: none) {
 
-
-
-
-
-
-
-// ======================================
-// EFECTO EN BOTONES
-// ======================================
-
-
-const buttons = document.querySelectorAll(
-    "button"
-);
-
-
-
-buttons.forEach(button=>{
-
-
-    button.addEventListener(
-        "mouseenter",
-        ()=>{
-
-
-            gsap.to(button,{
-
-                scale:1.05,
-
-                duration:.3
-
-            });
-
-
-
-        }
-    );
-
-
-
-    button.addEventListener(
-        "mouseleave",
-        ()=>{
-
-
-            gsap.to(button,{
-
-                scale:1,
-
-                duration:.3
-
-            });
-
-
-
-        }
-    );
-
-
-
-});
-// ======================================
-// EFECTO MÁQUINA DE ESCRIBIR
-// ======================================
-
-
-function typeWriter(element, text, speed = 50){
-
-
-    let i = 0;
-
-
-    element.innerHTML = "";
-
-
-
-    function typing(){
-
-
-        if(i < text.length){
-
-
-            element.innerHTML += text.charAt(i);
-
-
-            i++;
-
-
-            setTimeout(typing, speed);
-
-
-        }
-
-
+    .change-card:hover,
+    .future-card:hover,
+    .intro-button:hover,
+    .answer-button:hover {
+        transform: none;
     }
-
-
-
-    typing();
-
-
 
 }
 
 
-
-
-
-// ======================================
-// FRASES IMPORTANTES
-// ======================================
-
-
-const importantTexts = document.querySelectorAll(
-    ".text-large"
-);
-
-
-
-importantTexts.forEach(text=>{
-
-
-    text.addEventListener(
-        "click",
-        ()=>{
-
-
-            typeWriter(
-                text,
-                text.textContent.trim(),
-                70
-            );
-
-
-        }
-    );
-
-
-});
-
-
-
-
-
-
-
-// ======================================
-// MOVIMIENTO SUAVE DEL FONDO
-// ======================================
-
-
-const background = document.querySelector(
-    ".background"
-);
-
-
-
-document.addEventListener(
-"mousemove",
-(e)=>{
-
-
-    if(!background) return;
-
-
-
-    const x = e.clientX / window.innerWidth;
-
-    const y = e.clientY / window.innerHeight;
-
-
-
-    gsap.to(background,{
-
-        x:x * 20,
-
-        y:y * 20,
-
-        duration:2,
-
-        ease:"power2.out"
-
-
-    });
-
-
-
-});
-
-
-
-
-
-
-
-// ======================================
-// CORAZÓN FINAL ANIMADO
-// ======================================
-
-
-const finalHeart = document.querySelector(
-    ".final-heart"
-);
-
-
-
-if(finalHeart){
-
-
-    gsap.to(finalHeart,{
-
-
-        scale:1.15,
-
-
-        repeat:-1,
-
-
-        yoyo:true,
-
-
-        duration:1,
-
-
-        ease:"power1.inOut"
-
-
-
-    });
-
-
-
+/* ============================================================
+   EVITAR SELECCIÓN ACCIDENTAL EN BOTONES
+   ============================================================ */
+
+.intro-button,
+.answer-button {
+    -webkit-tap-highlight-color: transparent;
+
+    user-select: none;
 }
 
 
+/* ============================================================
+   FOCUS PARA ACCESIBILIDAD
+   ============================================================ */
 
+.intro-button:focus-visible,
+.answer-button:focus-visible {
+    outline: 2px solid var(--accent-light);
 
-
-
-
-// ======================================
-// ANIMACIÓN ESPECIAL FOTO
-// ======================================
-
-
-const photoSection = document.querySelector(
-    ".memory-scene"
-);
-
-
-
-if(photoSection){
-
-
-    photoSection.addEventListener(
-        "mouseenter",
-        ()=>{
-
-
-            gsap.to(photoSection,{
-
-                scale:1.01,
-
-                duration:.8
-
-            });
-
-
-        }
-    );
-
-
-
-    photoSection.addEventListener(
-        "mouseleave",
-        ()=>{
-
-
-            gsap.to(photoSection,{
-
-                scale:1,
-
-                duration:.8
-
-            });
-
-
-
-        }
-    );
-
-
-
+    outline-offset: 4px;
 }
 
 
+/* ============================================================
+   BOTONES DESACTIVADOS
+   ============================================================ */
 
+.answer-button:disabled {
+    cursor: default;
 
-
-
-
-// ======================================
-// TECLADO
-// ======================================
-
-
-document.addEventListener(
-"keydown",
-(e)=>{
-
-
-    if(e.key === "Enter"){
-
-
-
-        if(currentScene < scenes.length-1){
-
-
-            currentScene++;
-
-
-            showScene(currentScene);
-
-
-        }
-
-
-
-    }
-
-
-
-});
-
-
-
-
-
-
-
-// ======================================
-// EVITAR ERRORES EN MÓVILES
-// ======================================
-
-
-window.addEventListener(
-"resize",
-()=>{
-
-
-    if(window.innerWidth < 600){
-
-
-
-        gsap.globalTimeline.timeScale(.8);
-
-
-
-    }else{
-
-
-
-        gsap.globalTimeline.timeScale(1);
-
-
-
-    }
-
-
-
-});
-
-
-
-
-
-
-
-// ======================================
-// INICIO FINAL
-// ======================================
-
-
-console.log(
-`
-❤️ Proyecto para Heidy iniciado ❤️
-
-Cada escena fue creada
-para transmitir un sentimiento.
-
-`
-);
+    transform: none !important;
+}
