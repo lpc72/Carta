@@ -13,27 +13,27 @@ const CONFIG = {
   // Cambia los nombres si tus fotos son diferentes.
   fotos: [
     {
-      src: "assets/foto1.jpeg",
+      src: "assets/1.jpeg",
       texto: "Mi persona favorita"
     },
     {
-      src: "assets/foto2.jpeg",
+      src: "assets/2.jpeg",
       texto: "Nuestro pequeño mundo"
     },
     {
-      src: "assets/foto3.jpeg",
+      src: "assets/3.jpeg",
       texto: "Momentos contigo"
     },
     {
-      src: "assets/foto4.jpeg",
+      src: "assets/4.jpeg",
       texto: "Tu sonrisa"
     },
     {
-      src: "assets/foto5.jpeg",
+      src: "assets/5.jpeg",
       texto: "Tú y yo"
     },
     {
-      src: "assets/foto6.jpeg",
+      src: "assets/6.jpeg",
       texto: "Por muchos recuerdos más"
     }
   ],
