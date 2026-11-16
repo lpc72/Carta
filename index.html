@@ -1,972 +1,426 @@
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
-    <!-- Configuración básica -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Título de la página -->
-    <title>Lo que todavía nos queda por escribir</title>
-
-    <!-- Descripción -->
-    <meta
-        name="description"
-        content="Una historia que todavía quiero construir contigo."
-    >
-
-    <!-- Favicon -->
-    <link rel="icon" href="assets/1.jpeg">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Hoja de estilos -->
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#160714">
+  <meta name="description" content="Una sorpresa de aniversario para mi hermosa Heidy.">
+  <title>Para Heidy ❤️ Nuestro Universo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
-
 <body>
 
-    <!-- =====================================================
-         PANTALLA DE BIENVENIDA
-         ===================================================== -->
+  <div id="particles" aria-hidden="true"></div>
+  <div id="toast" class="toast" role="status"></div>
 
-    <section class="intro" id="intro">
+  <!-- PANTALLA INICIAL -->
+  <section id="intro" class="intro">
+    <div class="intro-content">
+      <div class="intro-heart">♥</div>
+      <span class="eyebrow">UNA SORPRESA HECHA CON AMOR</span>
+      <h1>Hay algo que quiero decirte...</h1>
+      <p>
+        Preparé un pequeño universo para la persona
+        que hace que mi mundo sea más bonito.
+      </p>
+      <button id="startBtn" class="btn btn-primary">
+        Descubre tu sorpresa <span>♡</span>
+      </button>
+      <small>Hecho especialmente para ti, mi amor</small>
+    </div>
+  </section>
 
-        <div class="intro-overlay"></div>
+  <!-- CONTENIDO -->
+  <main id="mainContent" class="hidden">
 
-        <div class="intro-content">
+    <!-- HERO -->
+    <section class="hero section" id="inicio">
+      <div class="hero-glow"></div>
+      <div class="hero-content reveal">
+        <span class="eyebrow">PARA LA PERSONA MÁS ESPECIAL</span>
+        <div class="hero-symbol">♡</div>
+        <h1>
+          Feliz aniversario,
+          <span>mi hermosa Heidy</span>
+        </h1>
+        <p class="hero-fullname">
+          Heidy Lean Paredes Huanca
+        </p>
+        <p class="hero-message">
+          De todas las historias que existen en este mundo,
+          la nuestra es mi favorita.
+          Y si pudiera volver a elegir,
+          volvería a encontrarte a ti.
+        </p>
+        <div class="hero-actions">
+          <a href="#historia" class="btn btn-primary">
+            Nuestra historia ♡
+          </a>
+          <a href="#carta" class="btn btn-outline">
+            Tengo algo para ti
+          </a>
+        </div>
+      </div>
+      <div class="scroll-hint">DESLIZA PARA DESCUBRIR ↓</div>
+    </section>
 
-            <!-- Pequeño detalle superior -->
-            <div class="intro-heart">
-                ♥
-            </div>
+    <!-- FECHA -->
+    <section class="section anniversary-section">
+      <div class="container center reveal">
+        <span class="eyebrow">NUESTRO DÍA ESPECIAL</span>
+        <h2>El 16 siempre será <em>nuestro</em></h2>
+        <p class="section-description">
+          Hay días que pasan como cualquier otro.
+          Pero el 16 tiene algo diferente:
+          me recuerda lo bonito que es tenerte en mi vida.
+        </p>
+        <div class="date-emblem">
+          <span>CADA MES</span>
+          <strong>16</strong>
+          <span>NUESTRO DÍA ♡</span>
+        </div>
+        <h3>Falta para nuestro próximo día 16</h3>
+        <div class="countdown" aria-label="Cuenta regresiva">
+          <div><strong id="days">00</strong><span>Días</span></div>
+          <div><strong id="hours">00</strong><span>Horas</span></div>
+          <div><strong id="minutes">00</strong><span>Minutos</span></div>
+          <div><strong id="seconds">00</strong><span>Segundos</span></div>
+        </div>
+        <p id="anniversaryMessage" class="anniversary-message"></p>
+      </div>
+    </section>
 
-
-            <!-- Frase principal -->
-            <h1>
-                Quizás la vida nos dio una pausa
-                para aprender a amarnos
-                de una manera diferente.
-            </h1>
-
-
-            <!-- Segunda parte de la frase -->
-            <p class="intro-subtitle">
-                Lo que vivimos forma parte de nosotros,
-                pero lo que podemos construir juntos
-                todavía está por escribirse.
-            </p>
-
-
-            <!-- Línea decorativa -->
-            <div class="intro-line"></div>
-
-
-            <!-- Botón para entrar -->
-            <button
-                class="intro-button"
-                id="enterButton"
-                type="button"
-            >
-                Quiero decirte algo
-                <span>♥</span>
-            </button>
-
+    <!-- HISTORIA -->
+    <section id="historia" class="section story-section">
+      <div class="container">
+        <div class="center reveal">
+          <span class="eyebrow">LO MÁS BONITO DE MI VIDA</span>
+          <h2>Nuestra pequeña gran <em>historia</em></h2>
+          <p class="section-description">
+            No todas las historias necesitan ser perfectas
+            para ser inolvidables.
+          </p>
         </div>
 
+        <div class="story-grid">
+          <article class="story-card reveal">
+            <span class="story-number">01</span>
+            <div class="story-icon">✧</div>
+            <h3>Cuando llegaste</h3>
+            <p>
+              No imaginaba que una persona pudiera convertirse
+              en alguien tan importante para mí.
+              Y entonces llegaste tú.
+            </p>
+          </article>
+
+          <article class="story-card reveal">
+            <span class="story-number">02</span>
+            <div class="story-icon">♡</div>
+            <h3>Cada momento</h3>
+            <p>
+              Las risas, las conversaciones, las pequeñas
+              locuras y los recuerdos contigo son tesoros
+              que guardo en mi corazón.
+            </p>
+          </article>
+
+          <article class="story-card reveal">
+            <span class="story-number">03</span>
+            <div class="story-icon">∞</div>
+            <h3>Lo que nos espera</h3>
+            <p>
+              Quiero seguir construyendo recuerdos contigo,
+              acompañarnos en nuestros sueños y encontrar
+              mil razones más para sonreír juntos.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOTOGRAFÍAS -->
+    <section id="recuerdos" class="section memories-section">
+      <div class="container">
+        <div class="center reveal">
+          <span class="eyebrow">INSTANTES QUE GUARDARÍA POR SIEMPRE</span>
+          <h2>Mis recuerdos <em>favoritos</em></h2>
+          <p class="section-description">
+            Las fotografías guardan momentos.
+            Tú haces que esos momentos sean especiales.
+          </p>
+        </div>
+
+        <div id="gallery" class="gallery"></div>
+      </div>
+    </section>
+
+    <!-- RAZONES -->
+    <section class="section reasons-section">
+      <div class="container center reveal">
+        <span class="eyebrow">UN PEQUEÑO RECORDATORIO</span>
+        <h2>Hay tantas razones para <em>quererte</em></h2>
+        <p class="section-description">
+          Podría escribir mil, pero hoy quiero
+          recordarte algunas.
+        </p>
+
+        <div class="reason-box">
+          <div class="reason-heart">♥</div>
+          <p id="reasonText">
+            Porque tu sonrisa puede alegrar incluso
+            los días más difíciles.
+          </p>
+          <span id="reasonCounter">01 / 08</span>
+          <button id="nextReason" class="btn btn-primary">
+            Otra razón ♡
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARTA -->
+    <section id="carta" class="section letter-section">
+      <div class="container center reveal">
+        <span class="eyebrow">PALABRAS DESDE MI CORAZÓN</span>
+        <h2>Una carta solo <em>para ti</em></h2>
+        <p class="section-description">
+          Hay cosas que a veces no sé cómo decirte,
+          así que decidí escribirlas.
+        </p>
+
+        <button id="envelope" class="envelope" aria-label="Abrir carta de amor">
+          <span class="envelope-back"></span>
+          <span class="envelope-paper">Para Heidy ♡</span>
+          <span class="envelope-front"></span>
+          <span class="envelope-flap"></span>
+          <span class="envelope-seal">♥</span>
+        </button>
+        <p class="envelope-hint">Toca el sobre para abrirlo</p>
+
+        <div id="loveLetter" class="love-letter hidden">
+          <div class="letter-decoration">❦</div>
+          <h3>Mi querida Heidy,</h3>
+
+          <p>
+            Hoy quiero recordarte lo importante que eres
+            para mí. A veces las palabras se quedan cortas
+            cuando intento explicar todo lo bonito que
+            siento por ti.
+          </p>
+
+          <p>
+            Desde que formas parte de mi vida, hay momentos
+            que tienen un significado diferente. Una sonrisa,
+            una conversación, un abrazo o simplemente saber
+            de ti puede hacer que mi día sea mucho mejor.
+          </p>
+
+          <p>
+            Sé que ninguna historia es perfecta. También
+            existen días complicados, diferencias y momentos
+            que nos enseñan a comprendernos mejor.
+            Pero valoro cada paso que hemos dado
+            y todo lo que seguimos aprendiendo juntos.
+          </p>
+
+          <p>
+            Quiero que sepas que te admiro, que me importas
+            muchísimo y que deseo seguir compartiendo
+            contigo experiencias, sueños y momentos
+            que algún día recordaremos con una sonrisa.
+          </p>
+
+          <p>
+            Gracias por ser tú, por tu cariño y por formar
+            parte de esta historia tan especial para mí.
+            Hoy, en nuestro día 16, quiero recordarte
+            que eres una persona maravillosa.
+          </p>
+
+          <p class="letter-highlight">
+            Si la vida me regalara la oportunidad de volver
+            a encontrarte, volvería a elegirte.
+          </p>
+
+          <div class="letter-signature">
+            <span>Con todo mi amor,</span>
+            <strong>Luis Yampol Puente Chavez ❤️</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SORPRESA FINAL -->
+    <section id="final" class="section final-section">
+      <div class="container center reveal">
+        <span class="eyebrow">ANTES DE TERMINAR...</span>
+        <h2>Todavía tengo algo <em>para ti</em></h2>
+        <p class="section-description">
+          Porque una persona tan especial merece
+          una última sorpresa.
+        </p>
+        <button id="surpriseBtn" class="btn btn-primary big-btn">
+          Abrir mi última sorpresa 🎁
+        </button>
+      </div>
     </section>
 
 
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-         ===================================================== -->
+<!-- INVITACIÓN ROMÁNTICA A CENAR -->
+<section id="invitacion" class="dinner-section section">
+  <div class="container center reveal">
+    <span class="eyebrow">UNA ÚLTIMA PREGUNTA, MI AMOR</span>
 
-    <main id="main-content">
+    <div class="dinner-heart" aria-hidden="true">♥</div>
 
-        <!--
-            Aquí iremos agregando las siguientes partes
-            de la historia.
-        -->
+    <h2>
+      Heidy, ¿me concederías
+      <em>una cita esta noche?</em>
+    </h2>
 
-    </main>
+    <p class="dinner-description">
+      Mi amor, hoy es nuestro día especial y no quiero
+      que termine sin compartir un momento bonito contigo.
+      Quiero invitarte a cenar, mirarte a los ojos,
+      verte sonreír y celebrar lo afortunado que soy
+      de tenerte en mi vida.
+    </p>
+
+    <div class="dinner-date">
+      <span>✦ UNA NOCHE PARA NOSOTROS ✦</span>
+      <strong>16 de noviembre</strong>
+      <small>Una cena, dos corazones y muchos recuerdos por crear.</small>
+    </div>
+
+    <h3 class="dinner-question">
+      Entonces, mi hermosa Heidy...<br>
+      ¿aceptas salir a cenar conmigo? 🥹❤️
+    </h3>
+
+    <div id="dinnerButtons" class="dinner-buttons">
+      <button id="acceptDinner" class="btn btn-primary dinner-yes">
+        ¡Sí, acepto! ❤️
+      </button>
+
+      <button id="rejectDinner" class="btn dinner-no">
+        No acepto 🙈
+      </button>
+    </div>
+
+    <p id="dinnerHint" class="dinner-hint">
+      Piénsalo bien, mi amor... hay una respuesta que
+      me haría inmensamente feliz. ♡
+    </p>
+  </div>
+</section>
+
+    <!-- AGRADECIMIENTO POR ACEPTAR -->
+    <div id="dinnerThanks" class="dinner-thanks hidden"
+        role="dialog" aria-modal="true"
+        aria-labelledby="dinnerThanksTitle">
+
+    <div class="dinner-thanks-card">
+        <button id="closeDinnerThanks" class="dinner-thanks-close"
+                aria-label="Cerrar agradecimiento">×</button>
+
+        <div class="dinner-thanks-heart">♥</div>
+
+        <span class="eyebrow">¡DIJISTE QUE SÍ!</span>
+
+        <h2 id="dinnerThanksTitle">
+        ¡Gracias, mi chiquita! ❤️
+        </h2>
+
+        <p class="dinner-thanks-lead">
+        No sabes lo feliz que me hace saber
+        que esta noche podremos compartir
+        otro momento especial.
+        </p>
+
+        <div class="dinner-thanks-message">
+        <p>
+            Mi hermosa Heidy, gracias por aceptar
+            esta pequeña invitación que preparé
+            con todo mi cariño.
+        </p>
+        <p>
+            No importa dónde estemos ni qué tan
+            sencilla sea nuestra cena.
+            Lo más bonito para mí será compartir
+            ese momento contigo.
+        </p>
+        <strong>
+            ¡Te amo muchísimo, mi amor! ❤️
+        </strong>
+        </div>
+
+        <p class="dinner-thanks-signature">
+        Con todo mi amor,<br>
+        Luis Puente ♡
+        </p>
+
+        <button id="finishDinnerThanks"
+                class="btn btn-primary">
+        Te amo, mi amor ❤️
+        </button>
+    </div>
+    </div>
 
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+    <footer>
+      <div class="footer-heart">♡</div>
+      <p>Heidy &amp; Yo</p>
+      <span>Una historia que quiero seguir escribiendo.</span>
+      <small>Hecho con amor, especialmente para ti. ♥</small>
+    </footer>
+  </main>
+
+  <!-- MODAL FINAL -->
+  <div id="surpriseModal" class="modal hidden"
+       role="dialog" aria-modal="true"
+       aria-labelledby="surpriseTitle">
+    <div class="modal-card">
+      <button id="closeModal" class="modal-close"
+              aria-label="Cerrar sorpresa">×</button>
+      <div class="modal-heart">♥</div>
+      <span class="eyebrow">MI PERSONA FAVORITA</span>
+      <h2 id="surpriseTitle">Heidy, mi amor...</h2>
+      <p>
+        Entre millones de personas, qué bonito
+        es que nuestros caminos se hayan encontrado.
+      </p>
+      <h3>¡Feliz aniversario! ❤️</h3>
+      <p>
+        Gracias por cada recuerdo, por cada sonrisa
+        y por ser parte de mi vida.
+      </p>
+      <strong class="forever-text">
+        Te amo muchísimo, mi hermosa Heidy.
+      </strong>
+      <div class="modal-infinity">∞</div>
+    </div>
+  </div>
+
+  <!-- VISOR DE FOTOS -->
+  <div id="lightbox" class="lightbox hidden"
+       role="dialog" aria-modal="true"
+       aria-label="Fotografía ampliada">
+    <button id="closeLightbox" aria-label="Cerrar fotografía">×</button>
+    <img id="lightboxImage" alt="Nuestro recuerdo">
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <!-- MÚSICA -->
+  <button id="musicBtn" class="music-btn hidden"
+          aria-label="Reproducir música"
+          title="Activar o pausar música">♫</button>
+
+  <audio id="backgroundMusic" loop preload="none">
+    <source src="assets/musica.mp3" type="audio/mpeg">
+  </audio>
 
 </body>
-
-</html>
-
-        <!-- =====================================================
-             SECCIÓN 01 — PRIMERO QUIERO QUE SEPAS ALGO
-             ===================================================== -->
-
-        <section class="story-section first-section" id="entender">
-
-            <div class="section-container">
-
-                <!-- Número de sección -->
-                <span class="section-number">
-                    01
-                </span>
-
-
-                <!-- Título -->
-                <h2>
-                    Primero quiero que sepas algo
-                </h2>
-
-
-                <!-- Línea decorativa -->
-                <div class="section-line"></div>
-
-
-                <!-- Texto principal -->
-                <div class="story-text">
-
-                    <p>
-                        Durante todo este tiempo he pensado mucho
-                        en nosotros, en lo que vivimos y, sobre todo,
-                        en las cosas que necesitaba entender de mí.
-                    </p>
-
-                    <p>
-                        Hubo momentos en los que mis pensamientos
-                        fue más fuerte que mi propia tranquilidad.
-                        Y hoy puedo reconocerlo de una manera diferente.
-                    </p>
-
-                    <p>
-                        Entendí que quererte no significa necesitarte
-                        , ni hacer que tú seas
-                        responsable de calmar mis inseguridades.
-                    </p>
-
-                    <p class="highlight-text">
-                        Entendí que amar también significa aprender
-                        a estar bien conmigo mismo.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-            <!-- =====================================================
-             SECCIÓN 02 — LO QUE CAMBIÓ EN MÍ
-             ===================================================== -->
-
-        <section class="story-section change-section" id="cambios">
-
-            <div class="section-container">
-
-                <!-- Número de sección -->
-                <span class="section-number">
-                    02
-                </span>
-
-
-                <!-- Título -->
-                <h2>
-                    Lo que cambió en mí
-                </h2>
-
-
-                <!-- Introducción -->
-                <p class="section-intro">
-                    No quiero decirte simplemente que he cambiado.
-                    Quiero que sepas qué aprendí y qué estoy
-                    construyendo dentro de mí.
-                </p>
-
-
-                <!-- =================================================
-                     CAMBIOS
-                     ================================================= -->
-
-                <div class="changes-grid">
-
-
-                    <!-- Cambio 01 -->
-                    <article class="change-card">
-
-                        <div class="change-number">
-                            01
-                        </div>
-
-                        <div class="change-icon">
-                            ♡
-                        </div>
-
-                        <h3>
-                            Aprendí a estar conmigo mismo
-                        </h3>
-
-                        <p>
-                            Entendí que estar solo no significa estar
-                            vacío. Aprendí a disfrutar de mi propia
-                            compañía y a encontrar tranquilidad
-                            dentro de mí.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Cambio 02 -->
-                    <article class="change-card">
-
-                        <div class="change-number">
-                            02
-                        </div>
-
-                        <div class="change-icon">
-                            ◌
-                        </div>
-
-                        <h3>
-                            Aprendí a manejar mi ansiedad
-                        </h3>
-
-                        <p>
-                            Dejé de permitir que mis miedos tomaran
-                            siempre el control. He aprendido a detenerme,
-                            respirar, pensar y enfrentar lo que siento
-                            de una manera más tranquila.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Cambio 03 -->
-                    <article class="change-card">
-
-                        <div class="change-number">
-                            03
-                        </div>
-
-                        <div class="change-icon">
-                            ∞
-                        </div>
-
-                        <h3>
-                            Dejé de confundir amor con dependencia
-                        </h3>
-
-                        <p>
-                            Comprendí que amar no significa
-                            necesitarlo para sentirme completo.
-                            Una relación debe acompañar nuestra vida.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Cambio 04 -->
-                    <article class="change-card">
-
-                        <div class="change-number">
-                            04
-                        </div>
-
-                        <div class="change-icon">
-                            ✦
-                        </div>
-
-                        <h3>
-                            Aprendí a respetar los espacios
-                        </h3>
-
-                        <p>
-                            Entendí que querer a alguien también significa
-                            respetar sus tiempos, sus decisiones y su
-                            espacio, sin convertir el miedo en una razón
-                            para aferrarme.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Cambio 05 -->
-                    <article class="change-card">
-
-                        <div class="change-number">
-                            05
-                        </div>
-
-                        <div class="change-icon">
-                            ↑
-                        </div>
-
-                        <h3>
-                            Empecé a crecer por mí
-                        </h3>
-
-                        <p>
-                            Estoy construyendo muchos objetivos,
-                            muchos sueños y una versión de mí
-                            que quiero seguir mejorando.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Cambio 06 -->
-                    <article class="change-card">
-
-                        <div class="change-number">
-                            06
-                        </div>
-
-                        <div class="change-icon">
-                            ♡
-                        </div>
-
-                        <h3>
-                            Entendí una nueva forma de amar
-                        </h3>
-
-                        <p>
-                            Hoy entiendo que amar también es confiar,
-                            escuchar, comprender y elegir
-                            a la persona desde la tranquilidad.
-                        </p>
-
-                    </article>
-
-                </div>
-
-
-                <!-- =================================================
-                     FRASE FINAL DE LA SECCIÓN
-                     ================================================= -->
-
-                <div class="change-conclusion">
-
-                    <span class="conclusion-symbol">
-                        ♥
-                    </span>
-
-                    <p>
-                        No quiero convencerte de que soy otra persona.
-                        Quiero que algún día puedas conocer esta versión
-                        de mí y decidir por ti misma qué significa para ti.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-            <!-- =====================================================
-             SECCIÓN 03 — Y AUN DESPUÉS DE TODO...
-             ===================================================== -->
-
-        <section class="story-section feeling-section" id="sentimientos">
-
-            <div class="section-container feeling-container">
-
-                <!-- Número de sección -->
-                <span class="section-number">
-                    03
-                </span>
-
-
-                <!-- Título -->
-                <h2>
-                    Y aun después de todo...
-                </h2>
-
-
-                <!-- Línea decorativa -->
-                <div class="section-line"></div>
-
-
-                <!-- Texto principal -->
-                <div class="feeling-content">
-
-                    <p class="feeling-opening">
-                        Aprender a estar bien conmigo mismo no hizo
-                        que dejara de amarte.
-                    </p>
-
-
-                    <p>
-                        Al contrario, me hizo entender mejor lo que
-                        realmente siento por ti.
-                    </p>
-
-
-                    <p>
-                        Hoy puedo decir que te extraño sin sentir que
-                        necesito aferrarme a ti.
-                        Puedo pensar en ti, recordar todo lo que
-                        significas para mí.
-                    </p>
-
-
-                    <!-- Frase destacada -->
-                    <div class="feeling-highlight">
-
-                        <span class="quote-mark">
-                            “
-                        </span>
-
-                        <p>
-                            No te quiero porque necesite que estés
-                            conmigo para sentirme completo.
-                            Te quiero porque, aprendiendo a estar
-                            conmigo mismo, sigo eligiendo
-                            mi vida contigo.
-                        </p>
-
-                        <span class="quote-mark closing">
-                            ”
-                        </span>
-
-                    </div>
-
-
-                    <p>
-                        Y creo que esa es una de las cosas más
-                        importantes que aprendí durante este tiempo:
-                        amar a alguien no debería significar perderse
-                        a uno mismo.
-                    </p>
-
-
-                    <p class="feeling-final">
-                        Quiero poder amarte desde un lugar más
-                        tranquilo, más consciente y mucho más sano.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-            <!-- =====================================================
-             SECCIÓN 04 — NO QUIERO BORRAR NUESTRA HISTORIA
-             ===================================================== -->
-
-        <section class="story-section history-section" id="historia">
-
-            <div class="section-container history-container">
-
-                <!-- Número de sección -->
-                <span class="section-number">
-                    04
-                </span>
-
-
-                <!-- Título -->
-                <h2>
-                    No quiero borrar nuestra historia
-                </h2>
-
-
-                <!-- Línea decorativa -->
-                <div class="section-line"></div>
-
-
-                <!-- Introducción -->
-                <div class="history-intro">
-
-                    <p>
-                        No quiero que todo lo que vivimos quede atrás
-                        como si nunca hubiera existido.
-                    </p>
-
-                    <p class="history-emphasis">
-                        Tampoco quiero empezar de cero contigo.
-                    </p>
-
-                </div>
-
-
-                <!-- Concepto central -->
-                <div class="history-card">
-
-                    <div class="history-symbol">
-                        ∞
-                    </div>
-
-                    <p>
-                        Porque no somos dos personas que recién
-                        se conocen.
-                    </p>
-
-                    <p>
-                        Somos dos personas que ya compartieron
-                        una parte importante de sus vidas,
-                        que se conocieron, se quisieron,
-                        tuvieron momentos hermosos y también
-                        atravesaron momentos difíciles.
-                    </p>
-
-                    <p>
-                        Todo eso forma parte de quienes somos hoy.
-                    </p>
-
-                </div>
-
-
-                <!-- Frase principal -->
-                <div class="history-quote">
-
-                    <span class="quote-line"></span>
-
-                    <p>
-                        No quiero volver al pasado.
-                        <br>
-                        Quiero tomar todo lo que aprendimos
-                        <br>
-                        y construir algo diferente.
-                    </p>
-
-                    <span class="quote-line"></span>
-
-                </div>
-
-
-                <!-- Cierre -->
-                <div class="history-closing">
-
-                    <p>
-                        Una historia que conserve lo bonito que
-                        tuvimos, que aprenda de lo que nos hizo daño
-                        y que tenga espacio para todo aquello que
-                        todavía podemos vivir.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-            <!-- =====================================================
-             SECCIÓN 05 — LO QUE QUIERO CONSTRUIR CONTIGO
-             ===================================================== -->
-
-        <section class="story-section future-section" id="futuro">
-
-            <div class="section-container">
-
-                <!-- Número de sección -->
-                <span class="section-number">
-                    05
-                </span>
-
-
-                <!-- Título -->
-                <h2>
-                    Lo que quiero construir contigo
-                </h2>
-
-
-                <!-- Introducción -->
-                <p class="section-intro future-intro">
-                    No imagino una relación perfecta.
-                    Imagino una relación en la que los dos
-                    podamos seguir creciendo juntos.
-                </p>
-
-
-                <!-- =================================================
-                     PILARES DE LA NUEVA HISTORIA
-                     ================================================= -->
-
-                <div class="future-grid">
-
-
-                    <!-- Amor -->
-                    <article class="future-card">
-
-                        <div class="future-icon">
-                            ♥
-                        </div>
-
-                        <h3>
-                            Más amor
-                        </h3>
-
-                        <p>
-                            Un amor que se demuestre en los pequeños
-                            detalles, en el cuidado, en la paciencia
-                            y en las ganas de seguir eligiéndonos.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Comunicación -->
-                    <article class="future-card">
-
-                        <div class="future-icon">
-                            ◌
-                        </div>
-
-                        <h3>
-                            Más comunicación
-                        </h3>
-
-                        <p>
-                            Poder hablar de lo que sentimos,
-                            escucharnos de verdad y aprender a
-                            resolver las cosas juntos.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Confianza -->
-                    <article class="future-card">
-
-                        <div class="future-icon">
-                            ♡
-                        </div>
-
-                        <h3>
-                            Más confianza
-                        </h3>
-
-                        <p>
-                            Construir una relación donde podamos
-                            confiar el uno en el otro sin que el
-                            miedo tenga que decidir por nosotros.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Tranquilidad -->
-                    <article class="future-card">
-
-                        <div class="future-icon">
-                            ✦
-                        </div>
-
-                        <h3>
-                            Más tranquilidad
-                        </h3>
-
-                        <p>
-                            Quiero que estar juntos se sienta como
-                            un lugar de paz, no como una fuente de
-                            inseguridades o miedo.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Libertad -->
-                    <article class="future-card">
-
-                        <div class="future-icon">
-                            ∞
-                        </div>
-
-                        <h3>
-                            Más libertad
-                        </h3>
-
-                        <p>
-                            Amarnos sin dejar de ser nosotros mismos,
-                            respetando nuestros espacios, nuestros
-                            sueños y nuestro crecimiento personal.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Crecimiento -->
-                    <article class="future-card">
-
-                        <div class="future-icon">
-                            ↑
-                        </div>
-
-                        <h3>
-                            Seguir creciendo
-                        </h3>
-
-                        <p>
-                            Apoyarnos para ser mejores personas,
-                            celebrar nuestros avances y caminar
-                            juntos sin dejar de crecer individualmente.
-                        </p>
-
-                    </article>
-
-                </div>
-
-
-                <!-- =================================================
-                     PROMESA
-                     ================================================= -->
-
-                <div class="future-promise">
-
-                    <p class="promise-main">
-                        No te prometo que nunca tendremos problemas.
-                    </p>
-
-                    <p class="promise-secondary">
-                        Te prometo que quiero aprender a enfrentarlos
-                        de una manera diferente.
-                    </p>
-
-                </div>
-
-
-                <!-- Frase de cierre -->
-                <div class="future-closing">
-
-                    <p>
-                        Porque una nueva historia no significa
-                        una historia perfecta.
-                    </p>
-
-                    <p class="closing-emphasis">
-                        Significa una historia más consciente,
-                        más madura y llena de amor.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-            <!-- =====================================================
-             SECCIÓN 06 — QUIERO PROPONERTE ALGO
-             ===================================================== -->
-
-        <section class="story-section proposal-section" id="propuesta">
-
-            <div class="section-container proposal-container">
-
-                <!-- Número de sección -->
-                <span class="section-number">
-                    06
-                </span>
-
-
-                <!-- Título -->
-                <h2>
-                    Quiero proponerte algo
-                </h2>
-
-
-                <!-- Línea decorativa -->
-                <div class="section-line"></div>
-
-
-                <!-- =================================================
-                     CARTA
-                     ================================================= -->
-
-                <div class="proposal-letter">
-
-                    <p>
-                        No quiero pedirte que olvidemos lo que pasó.
-                    </p>
-
-                    <p>
-                        Tampoco quiero pedirte que volvamos a ser
-                        exactamente quienes éramos antes.
-                    </p>
-
-                    <p>
-                        Los dos hemos cambiado.
-                        Y creo que eso no tiene por qué ser algo malo.
-                    </p>
-
-
-                    <p class="proposal-emphasis">
-                        Quiero que construyamos una nueva historia.
-                    </p>
-
-
-                    <p>
-                        Una historia que nazca de todo lo que hemos
-                        aprendido, de todo lo que hemos vivido y de
-                        las personas en las que nos estamos convirtiendo.
-                    </p>
-
-                    <p>
-                        Quiero poder amarte de una manera más tranquila,
-                        sin miedo, sin dependencia y sin perderme a mí
-                        mismo.
-                    </p>
-
-                    <p>
-                        Quiero escucharte más, comprenderte más,
-                        respetarte más y aprender a caminar contigo.
-                    </p>
-
-
-                    <p>
-                        No te prometo una historia perfecta.
-                        Te prometo que quiero poner de mi parte para
-                        construir una historia más bonita, más sana
-                        y más consciente.
-                    </p>
-
-
-                    <p class="proposal-final">
-                        Y si tú también lo quieres...
-                    </p>
-
-                </div>
-
-
-                <!-- =================================================
-                     FRASE CENTRAL
-                     ================================================= -->
-
-                <div class="proposal-question">
-
-                    <span class="question-heart">
-                        ♥
-                    </span>
-
-                    <p>
-                        Me gustaría construir
-                        esa nueva historia contigo.
-                    </p>
-
-                </div>
-
-
-                <!-- =================================================
-                     PEQUEÑA NOTA
-                     ================================================= -->
-
-                <div class="proposal-note">
-
-                    <p>
-                        No quiero que esta página sea una presión
-                        para ti. Solo quería encontrar una manera
-                        de decirte todo esto desde el corazón.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-            <!-- =====================================================
-             SECCIÓN 07 — LA PREGUNTA
-             ===================================================== -->
-
-        <section class="final-section" id="pregunta">
-
-            <div class="final-container">
-
-                <!-- Pequeño detalle -->
-                <div class="final-heart">
-                    ♥
-                </div>
-
-
-                <!-- Texto introductorio -->
-                <p class="final-small-text">
-                    Y después de todo lo que quería decirte...
-                </p>
-
-
-                <!-- Pregunta principal -->
-                <h2>
-                    ¿Quieres construir<br>
-                    esa historia conmigo?
-                </h2>
-
-
-                <!-- Texto secundario -->
-                <p class="final-message">
-                    No necesito una respuesta perfecta.
-                    Solo quiero saber qué siente tu corazón.
-                </p>
-
-
-                <!-- =================================================
-                     BOTONES
-                     ================================================= -->
-
-                <div class="final-buttons">
-
-                    <button
-                        class="answer-button answer-yes"
-                        id="yesButton"
-                        type="button"
-                    >
-                        <span>♥</span>
-                        Sí, quiero intentarlo contigo
-                    </button>
-
-
-                    <button
-                        class="answer-button answer-talk"
-                        id="talkButton"
-                        type="button"
-                    >
-                        Quiero hablar contigo
-                    </button>
-
-                </div>
-
-
-                <!-- =================================================
-                     RESPUESTA
-                     ================================================= -->
-
-                <div
-                    class="response-message"
-                    id="responseMessage"
-                    aria-live="polite"
-                >
-
-                    <!--
-                        JavaScript colocará aquí el mensaje
-                        dependiendo de la opción elegida.
-                    -->
-
-                </div>
-
-
-                <!-- Firma -->
-                <div class="final-signature">
-
-                    <p>
-                        Con todo mi corazón
-                    </p>
-
-                    <span>
-                        ♥
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-
-</body>
-
 </html>
